@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-function UsersList({ users }) {
-  console.log(users)
-  
+function UsersList() {
+  // console.log(state)
+  const users = useSelector((state) => state.users);
+
   return (
     <>
       <ul>
@@ -11,7 +13,7 @@ function UsersList({ users }) {
         ))}
       </ul>
     </>
-  )
+  );
 }
 
-export default UsersList
+export default UsersList;

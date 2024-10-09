@@ -1,13 +1,13 @@
 // import { useState } from "react";
 import Users from "./components/Users";
 import UsersList from "./components/UsersList";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchUsersRequest } from './store/actions';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUsersRequest } from "./store/actions";
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const {loading, error } = useSelector((state) => state.users);
   // const [usersData, setUsersData] = useState([]);
-  const {usersData, loading, error} = useSelector((state) => state)
 
   const handleClick = () => {
     // const fetchedData = async () => {
@@ -20,7 +20,7 @@ function App() {
     //   }
     // };
     // fetchedData();
-    dispatch(fetchUsersRequest())
+    dispatch(fetchUsersRequest());
   };
 
   return (
@@ -30,8 +30,8 @@ function App() {
       <button onClick={handleClick}>Get Users</button>
       {loading && <p>...Loading</p>}
       {error && <p>Error: {error}</p>}
-      
-      <UsersList usersData = {usersData} />
+
+      <UsersList />
     </>
   );
 }
